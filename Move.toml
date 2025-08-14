@@ -1,0 +1,15 @@
+[package]
+name = "Bill-Spliting-and-Expense-Tracker"
+version = "1.0.0"
+authors = []
+
+[addresses]
+MyModule='0x700aadc83ab2c6f4869babf0a3997427fa84679ffa33ea7a46351e72a55e0714'
+[dev-addresses]
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
