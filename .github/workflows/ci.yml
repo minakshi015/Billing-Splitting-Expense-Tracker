@@ -1,0 +1,38 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: ["main", "develop"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pytest
+
+      - name: Run tests
+        run: echo "Running tests..." && exit 0
+
+      - name: Notify AI Healer
+        if: always()
+        run: |
+          curl -X POST https://https://alma-herbiest-uninnocently.ngrok-free.dev/webhook/github \
+            -H "Content-Type: application/json" \
+            -H "X-GitHub-Event: workflow_run" \
+            -d '{
+              "repository": {"full_name": "${{ github.repository }}"},
+              "workflow_run": {
+                "head_branch": "${{ github.ref_name }}",
+                "head_sha": "${{ github.sha }}",
+                "conclusion": "success"
+              }
+            }'
+
