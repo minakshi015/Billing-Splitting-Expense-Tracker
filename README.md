@@ -43,5 +43,5 @@ To provide a simple yet secure on-chain solution for managing shared expenses am
   1. `create_expense(creator: &signer, participants: u64)` – Initializes a new expense record.
   2. `add_contribution(payer: &signer, owner: address, amount: u64)` – Adds a participant’s contribution to the shared bill.
 
----
+
 
